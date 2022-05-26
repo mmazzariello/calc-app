@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Functions from "./components/Functions";
 import MathOperations from "./components/MathOperations";
 import Result from "./components/Result";
@@ -6,11 +6,13 @@ import "./App.css";
 import Numbers from "./components/Numbers";
 
 const App = () => {
+  const [stack, setStack] = useState("");
+  console.log("render");
   return (
     <main className="react-calculator">
-      <Result value={"0"} />
+      <Result value={stack} />
       <div className="numbers">
-        <Numbers onClickNumber={(number) => console.log(number)} />
+        <Numbers onClickNumber={(number) => setStack(number)} />
       </div>
       <Functions onContentClear={(clear) => console.log(clear)} onDelete={(onDelete) => console.log(onDelete)} />
       <MathOperations
